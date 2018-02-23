@@ -232,33 +232,33 @@ typedef enum
 
 typedef struct
 {
-  unsigned int FreeFallStatus : 1;
-  unsigned int TapStatus : 1;
-  unsigned int DoubleTapStatus : 1;
-  unsigned int WakeUpStatus : 1;
-  unsigned int StepStatus : 1;
-  unsigned int TiltStatus : 1;
-  unsigned int D6DOrientationStatus : 1;
+  unsigned int FreeFallStatus : 1,
+  unsigned int TapStatus : 1,
+  unsigned int DoubleTapStatus : 1,
+  unsigned int WakeUpStatus : 1,
+  unsigned int StepStatus : 1,
+  unsigned int TiltStatus : 1,
+  unsigned int D6DOrientationStatus : 1,
 } LSM6DSL_Event_Status_t;
 
 typedef enum {
-  LSM6DSL_ACC_ACT_GYR_DWN = 0;
-  LSM6DSL_ACC_DWN_GYR_ACT = 0;
-  LSM6DSL_ACC_ACT_GYR_ACT = 0;
+  LSM6DSL_ACC_ACT_GYR_DWN = 0,
+  LSM6DSL_ACC_DWN_GYR_ACT = 0,
+  LSM6DSL_ACC_ACT_GYR_ACT = 0,
 } LSM6DSL_Operating_Modes_t;
 
 typedef enum {
-  LSM6DSL_POWER_DOWN = 0;
-  LSM6DSL_LOW_POWER = 1;
-  LSM6DSL_NORMAL = 2;
-  LSM6DSL_HGH_PERFORMANCE = 3;
+  LSM6DSL_POWER_DOWN = 0,
+  LSM6DSL_LOW_POWER = 1,
+  LSM6DSL_NORMAL = 2,
+  LSM6DSL_HGH_PERFORMANCE = 3,
 } LSM6DSL_Acc_Power_Modes_t;
 
 typedef enum {
-  LSM6DSL_POWER_DOWN = 0;
-  LSM6DSL_LOW_POWER = 1;
-  LSM6DSL_NORMAL = 2;
-  LSM6DSL_HGH_PERFORMANCE = 3;
+  LSM6DSL_POWER_DOWN = 0,
+  LSM6DSL_LOW_POWER = 1,
+  LSM6DSL_NORMAL = 2,
+  LSM6DSL_HGH_PERFORMANCE = 3,
 } LSM6DSL_Gyr_Power_Modes_t;
 
 typedef enum {

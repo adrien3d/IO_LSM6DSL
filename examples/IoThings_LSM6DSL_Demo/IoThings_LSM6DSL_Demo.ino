@@ -1,5 +1,5 @@
 /***************************************************************************
-  This is a library for the LSM6DSL humidity, temperature & pressure sensor
+  This is a library for the LSM6DSL accelerometer & gyroscope sensor
 
   Designed to work with all kinds of LSM6DSL Breakout
 
@@ -13,48 +13,48 @@
 #include <SPI.h>
 #include <IO_LSM6DSL.h>
 
-#define BME_SCK 13
-#define BME_MISO 12
-#define BME_MOSI 11
-#define BME_CS 10
+#define LSM_SCK 13
+#define LSM_MISO 12
+#define LSM_MOSI 11
+#define LSM_CS 10
 
 
-IO_LSM6DSL bme; // I2C
-//IO_LSM6DSL bme(BME_CS); // hardware SPI
-//IO_LSM6DSL bme(BME_CS, BME_MOSI, BME_MISO,  BME_SCK);
+IO_LSM6DSL lsm; // I2C
+//IO_LSM6DSL lsm(LSM_CS); // hardware SPI
+//IO_LSM6DSL lsm(LSM_CS, LSM_MOSI, LSM_MISO, LSM_SCK);
 
 void setup() {
   Serial.begin(9600);
   Serial.println(F("LSM6DSL test"));
 
-  if (!bme.begin()) {
+  if (!lsm.begin(1)) {
     Serial.println("Could not find a valid LSM6DSL sensor, check wiring!");
     while (1);
   }
 }
 
 void loop() {
-    Serial.print("Temperature = ");
-    Serial.print(bme.readTemperature());
-    Serial.println(" *C");
+  //Get all parameters
+  Serial.print("\nAccelerometer:\n");
+  Serial.print(" X = ");
+  Serial.println(lsm.readFloatAccelX(), 4);
+  Serial.print(" Y = ");
+  Serial.println(lsm.readFloatAccelY(), 4);
+  Serial.print(" Z = ");
+  Serial.println(lsm.readFloatAccelZ(), 4);
 
-    Serial.print("Pressure = ");
+  Serial.print("\nGyroscope:\n");
+  Serial.print(" X = ");
+  Serial.println(lsm.readFloatGyroX(), 4);
+  Serial.print(" Y = ");
+  Serial.println(lsm.readFloatGyroY(), 4);
+  Serial.print(" Z = ");
+  Serial.println(lsm.readFloatGyroZ(), 4);
 
-    Serial.print(bme.readPressure() / 100.0F);
-    Serial.println(" hPa");
+  Serial.print("Temperature = ");
+  Serial.print(lsm.readTemperature());
+  Serial.println(" °C");
 
-    Serial.print("Approx. Altitude = ");
-    Serial.print(bme.readAltitude(SEALEVELPRESSURE_HPA));
-    Serial.println(" m");
-
-    Serial.print("Humidity = ");
-    Serial.print(bme.readHumidity());
-    Serial.println(" %");
-
-    Serial.print("Pres at sea level = ");
-    Serial.print(bme.seaLevelForAltitude(110.6, 1023.4));
-    Serial.println(" hPa");
-
-    Serial.println();
-    delay(500);
+  Serial.println();
+  delay(500);
 }
